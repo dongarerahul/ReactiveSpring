@@ -11,27 +11,31 @@ export class ReservationService {
 
   constructor(private http: HttpClient) {}
 
-  createReservation(reservation: ReservationRequest): Observable<Reservation> {
+  getReservations(): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(this.reservationUrl);
+  }
+
+  createReservation(reservationBody: ReservationRequest): Observable<Reservation> {
     let httpOptions = {
       headers: new HttpHeaders({'Content-type': 'application/json'})
     };
 
-    const response = this.http.post<Reservation>(this.reservationUrl, reservation, httpOptions);
-    return response;
+    console.log('Creating Reservation : ' + JSON.stringify(reservationBody));
+    return this.http.post<Reservation>(this.reservationUrl, reservationBody, httpOptions);
   }
 }
 
 export class ReservationRequest {
   roomNumber: number;
-  checkin: string;
-  checkout: string;
+  checkIn: string;
+  checkOut: string;
   price: number;
 
 
-  constructor(roomNumber: number, checkin: string, checkout: string, price: number) {
+  constructor(roomNumber: number, checkIn: string, checkOut: string, price: number) {
     this.roomNumber = roomNumber;
-    this.checkin = checkin;
-    this.checkout = checkout;
+    this.checkIn = checkIn;
+    this.checkOut = checkOut;
     this.price = price;
   }
 }
@@ -39,7 +43,7 @@ export class ReservationRequest {
 export interface Reservation {
   id: string;
   roomNumber: number;
-  checkin: Date;
-  checkout: Date;
+  checkIn: Date;
+  checkOut: Date;
   price: number;
 }

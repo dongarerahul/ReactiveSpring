@@ -11,8 +11,8 @@ import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.SimpleReactiveMongoDatabaseFactory;
 
-@Profile(value = "local")
 @Configuration
+@Profile(value = "local")
 @Import(EmbeddedMongoAutoConfiguration.class)
 public class DataConfig {
 

@@ -9,14 +9,13 @@ import java.time.LocalDate;
 @Document
 public class Reservation {
     private Long roomNumber;
+    private Integer price;
 
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     private LocalDate checkIn;
 
     @DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
     private LocalDate checkOut;
-
-    private Integer price;
 
     @Id
     private String id;
@@ -58,6 +57,17 @@ public class Reservation {
     }
 
     public Reservation() { }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "roomNumber=" + roomNumber +
+                ", price=" + price +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", id='" + id + '\'' +
+                '}';
+    }
 
     public Reservation(final Long roomNumber, final LocalDate checkIn, final LocalDate checkOut, final Integer price) {
         this.roomNumber = roomNumber;

@@ -3,4 +3,5 @@
 gradle/*
 gradlew
 gradlew.bat
-**/build/**
+/**/*.class
+build/classes/**/DataConfig.class

@@ -1,5 +1,6 @@
-package com.linkedinlearning.reactivespring.model;
+package com.linkedinlearning.reactivespring.service;
 
+import com.linkedinlearning.reactivespring.model.Reservation;
 import com.linkedinlearning.reactivespring.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;
@@ -7,6 +8,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -49,5 +51,10 @@ public class ReservationServiceImpl implements ReservationService {
         Query query = Query.query(Criteria.where("id").is(id));
         return operations.remove(query, Reservation.class)
                 .flatMap(deleteResult -> Mono.just(deleteResult.wasAcknowledged()));
+    }
+
+    @Override
+    public Flux<Reservation> listAllReservations() {
+        return operations.findAll(Reservation.class);
     }
 }

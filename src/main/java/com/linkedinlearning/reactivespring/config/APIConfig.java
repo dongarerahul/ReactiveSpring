@@ -23,7 +23,7 @@ public class APIConfig {
     }
 
     @Bean
-    public ObjectWriter objectMapper(ObjectMapper wrapper) {
-        return wrapper.writerWithDefaultPrettyPrinter();
+    public ObjectWriter objectWriter(ObjectMapper mapper) {
+        return mapper.writerWithDefaultPrettyPrinter();
     }
 }

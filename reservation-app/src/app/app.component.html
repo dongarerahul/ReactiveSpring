@@ -60,18 +60,18 @@
         </div>
         <hr />
         <h1>Reserve Room</h1>
-        <form class="form-horizontal" [formGroup]="roomResearchForm" (ngSubmit)="createReservation()">
+        <form class="form-horizontal" [formGroup] = "roomResearchForm" (ngSubmit)="createReservation()">
           <div class="form-group">
-            <label for="checkin" class="col-4">Check In:</label>
+            <label for="checkIn" class="col-4">Check In:</label>
             <div class="col-8">
-              <input id="checkin" type="date" class="form-control" formControlName="checkin"/>
+              <input id="checkIn" type="date" class="form-control" formControlName="checkIn"/>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="checkout" class="col-4">Check Out:</label>
+            <label for="checkOut" class="col-4">Check Out:</label>
             <div class="col-8">
-              <input id="checkout" type="date" class="form-control" formControlName="checkout"/>
+              <input id="checkOut" type="date" class="form-control" formControlName="checkOut"/>
             </div>
           </div>
 
